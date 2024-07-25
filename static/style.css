@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .5) 100%),
+    radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%),
+    url('https://bing.img.run/rand_uhd.php');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.3s ease;
+}
+
+@keyframes clickSearchBox {
+    from {
+        width: 15%;
+    }
+    to {
+        width: 30%;
+    }
+}
+
+@keyframes releaseSearchBox {
+    from {
+        width: 30%;
+    }
+    to {
+        width: 15%;
+    }
+}
+
+@keyframes bgimageBlur {
+    from {
+        backdrop-filter: blur(0px);
+    }
+    to {
+        backdrop-filter: blur(10px);
+    }
+}
+
+@keyframes bgimageReleaseBlur {
+    from {
+        backdrop-filter: blur(10px);
+    }
+    to {
+        backdrop-filter: blur(0px);
+    }
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.relative {
+    position: relative;
+}
+
+.root:focus-within {
+    animation-name: bgimageBlur;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+.root:not(:focus-within) {
+    animation-name: bgimageReleaseBlur;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+.root {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#currentWeather {
+    top: 0;
+    left: 0;
+}
+
+#searchBox {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .25);
+    box-shadow: rgba(0, 0, 0, .2) 0 0 10px;
+    opacity: 0.8;
+    padding: 10px;
+    font-size: 16px;
+    width: 15%;
+    text-align: center;
+    -webkit-backdrop-filter: blur(100px) saturate(1.5);
+    backdrop-filter: blur(10px) saturate(1.5);
+    transition: color .25s, background-color .25s, box-shadow .25s, left .25s, opacity .25s, top .25s, width .25s
+}
+
+#searchBox:focus {
+    animation-name: clickSearchBox;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+#searchBox:not(:focus) {
+    animation-name: releaseSearchBox;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+#searchBox:hover {
+    animation-name: clickSearchBox;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+#searchBox:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+#selectSearchEngine {
+    opacity: 0.8;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+#searchBox::placeholder {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    transition: .25s;
+}
+
+#searchBox:hover::placeholder {
+    color: black;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    transition: .25s;
+}
+
+*::selection {
+    background-color: rgba(112, 192, 0, .5);
+}
+
+#clock {
+    position: fixed;
+    top: 30vh;
+    color: white;
+    font-size: 45px;
+}
